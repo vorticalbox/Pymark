@@ -2,7 +2,6 @@ from multiprocessing import Pool
 from datetime import datetime
 import math
 
-units = 1
 myList = []
 
 def f(x):
