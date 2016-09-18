@@ -9,8 +9,9 @@ def f(x):
     c = math.sqrt((x**2)+(x**2))
 
 def createList(calc):
-    myList = [i+1 for i in range(calc)]
-
+    for i in range(calc):
+        myList.append(i*1)
+        
 def startBench(threads):
     for i in range(1,threads+1):
         print("Started using {} thread(s)".format(i))
@@ -21,7 +22,7 @@ def startBench(threads):
 
 if __name__ == '__main__':
     print("creating list {}".format(datetime.now()))
-    createList(10**6)
+    createList(10**7)
     print("List created {}".format(datetime.now()))
     print("Starting {} calculations".format(len(myList)))
     startBench(int(input('Enter CPU Threads : ')))
