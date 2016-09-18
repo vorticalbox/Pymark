@@ -1,8 +1,10 @@
 from multiprocessing import Pool
 from datetime import datetime
 import math
+
 units = 1
-myList = [] 
+myList = []
+
 def f(x):
     c = math.sqrt((x**2)+(x**2))
 
