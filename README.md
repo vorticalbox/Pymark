@@ -20,6 +20,10 @@ Starts the benchmark calculating Pythagoras Theorem from 1 - n on 1 - n threads.
 name.f(list)
 This is the function that does all the calculations, it takes a list. no need to use this function as it is called from startBench()
 
+## TODO
+-Move list creation to startBench to insure the list is always created before the test starts
+-Output results to file
+
 ## Contributing
 
 1. Fork it!
@@ -29,7 +33,8 @@ This is the function that does all the calculations, it takes a list. no need to
 5. Submit a pull request :D
 
 ## History
-
+v1.1
+added auto thread detection
 v1.0
 Created basic benchmark.
 
