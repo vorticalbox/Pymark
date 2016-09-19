@@ -1,6 +1,8 @@
 # Pymark
 
-Pymark is a simple benchmark that uses pools and Pythagoras Theorem to give an idea of CPU speed. It returns a time in seconds for each thread count used.
+Pymark is a simple benchmark that uses pools and Pythagoras Theorem to give an idea of CPU speed. It returns a time in seconds for each thread count used. 
+
+You can use this as an example of how to use pools.
 
 ## Installation
 
