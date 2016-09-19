@@ -1,5 +1,5 @@
-from multiprocessing import Pool
-from datetime import datetime
+import multiprocessing
+import datetime
 import math
 
 myList = []
@@ -11,8 +11,8 @@ def createList(calc):
     for i in range(calc):
         myList.append(i*1)
         
-def startBench(threads):
-    for i in range(1,threads+1):
+def startBench():
+    for i in range(1,multiprocess.cpu_count()+1):
         print("Started using {} thread(s)".format(i))
         startTime = datetime.now()
         p = Pool(i)
@@ -24,5 +24,5 @@ if __name__ == '__main__':
     createList(10**7)
     print("List created {}".format(datetime.now()))
     print("Starting {} calculations".format(len(myList)))
-    startBench(int(input('Enter CPU Threads : ')))
+    startBench()
     print("end")
