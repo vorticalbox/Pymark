@@ -1,7 +1,6 @@
 from multiprocessing import Pool,cpu_count
 from datetime import datetime
 import math
-
 calc =[]
 def i(x):
     c = math.sqrt((x**2)+(x**2))
@@ -11,10 +10,10 @@ def f(x):
 def createList(n):
     for i in range(n):
         calc.append(i)
-def startInt():
+def startInt(n):
     threads = cpu_count()
     print("Creating list.")
-    createList(10**7)
+    createList(n)
     print("List created")
     print("Starting {} intger calculations with 1 thread".format(len(calc)))
     startTime = datetime.now()
@@ -31,13 +30,13 @@ def startInt():
     else:
         print('Single core CPU skipping test')
     calc[:] = []
-def startFloat():
+def startFloat(n):
     threads = cpu_count()
     print('Warning! float calculations can take a long time')
     #multi core test#
     if threads >= 4:
         print("Creating list.")
-        createList(10**4)
+        createList(n)
         print("List created")
         print("Starting {} calculations with {} threads".format(len(calc), threads))
         startTime = datetime.now()
@@ -48,5 +47,5 @@ def startFloat():
         print('Float test takes too long with < 4 threads')
     calc[:] = []
 if __name__ == '__main__':
-    #startInt()
-    startFloat()
+    startInt(10**7)
+    startFloat(10**4)
