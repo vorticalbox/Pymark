@@ -17,6 +17,7 @@ n = number of calculation, 10**7 (10 million) is suggested to avoid memory error
 
 startFloat(n)
 n = number of calculation, 10**4 (10,000) is suggested due to time to calculate. 
+limited to 4 cores or more due to time. 
 
 f(list)
 This is the function that does all the calculations, it takes a list. no need to use this function as it is called from startBench()
