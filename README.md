@@ -1,6 +1,6 @@
 # Pymark
 
-Pymark is a simple benchmark that uses pools and Pythagoras Theorem to give an idea of CPU speed. It returns a time in seconds for each thread count used. 
+Pymark is a simple benchmark that uses pools and Pythagoras Theorem to give an idea of CPU speed. It returns a time in seconds for single then max threads. 
 
 You can use this as an example of how to use pools.
 
@@ -19,8 +19,11 @@ startFloat(n)
 n = number of calculation, 10**4 (10,000) is suggested due to time to calculate. 
 limited to 4 cores or more due to time. 
 
+i(list)
+This is the function that does all the int calculations and it takes a list. no need to use this function as it is called from startInt()
+
 f(list)
-This is the function that does all the calculations, it takes a list. no need to use this function as it is called from startBench()
+This function does float calculations and takes a list. No need to use this function as it is called from startFloat()
 
 ## TODO
 -Output results to file
