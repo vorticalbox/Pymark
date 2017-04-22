@@ -27,6 +27,7 @@ This function does float calculations and takes a list. No need to use this func
 
 ## TODO
 -Output results to file
+-Create more tests
 
 ## Contributing
 
