@@ -1,5 +1,4 @@
 # Pymark
-
 Pymark is a simple benchmark that uses pools and Pythagoras Theorem to give an idea of CPU speed. It returns a time in seconds for single then max threads. 
 
 You can use this as an example of how to use pools.
@@ -12,7 +11,7 @@ Put in a folder and import or run as is
 
 if importing
 
-stratInt(n)
+startInt(n)
 n = number of calculation, 10**7 (10 million) is suggested to avoid memory errors
 
 startFloat(n)
@@ -55,7 +54,7 @@ Created basic benchmark.
 
 MIT License
 
-Copyright (c) 2016 vorticalbox
+Copyright (c) 2017 vorticalbox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -15,7 +15,7 @@ def startInt(n):
     print("Creating list.")
     createList(n)
     print("List created")
-    print("Starting {} intger calculations with 1 thread".format(len(calc)))
+    print("Starting {} integer calculations with 1 thread".format(len(calc)))
     startTime = datetime.now()
     p = Pool(1)
     p.map(i, calc)
@@ -43,6 +43,7 @@ def startFloat(n):
         p = Pool(threads)
         p.map(f, calc)
         print("Took {} with {} thread(s)".format((datetime.now() - startTime).total_seconds(), threads))
+        input("Press enter to close program")
     else:
         print('Float test takes too long with < 4 threads')
     calc[:] = []
