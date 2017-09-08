@@ -37,6 +37,12 @@ This function does float calculations and takes a list. No need to use this func
 5. Submit a pull request :D
 
 ## History
+v1.3
+Massively reduced memory usage.
+Changed Float to allow testing on any system.
+Much neater code
+
+
 v1.2
 Added Float test for CPUs with 4 threads or more
 Fixed an issue to left the list populated between tests, now clears list at the end of each test.

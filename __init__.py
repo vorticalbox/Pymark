@@ -1,52 +1,52 @@
 from multiprocessing import Pool,cpu_count
-from datetime import datetime
+from time import time
 import math
-calc =[]
-def i(x):
-    c = math.sqrt((x**2)+(x**2))
-def f(x):
-    while x > 1:
-        x *= 0.9999
-def createList(n):
-    for i in range(n):
-        calc.append(i)
-def startInt(n):
-    threads = cpu_count()
-    print("Creating list.")
-    createList(n)
-    print("List created")
-    print("Starting {} integer calculations with 1 thread".format(len(calc)))
-    startTime = datetime.now()
-    p = Pool(1)
-    p.map(i, calc)
-    print("Took {} with 1 thread(s)".format((datetime.now() - startTime).total_seconds()))
-    #multi core test#
-    if threads > 1:
-        print("Starting {} calculations with {} threads".format(len(calc), threads))
-        startTime = datetime.now()
-        p = Pool(threads)
-        p.map(i, calc)
-        print("Took {} with {} thread(s)".format((datetime.now() - startTime).total_seconds(), threads))
-    else:
-        print('Single core CPU skipping test')
-    calc[:] = []
-def startFloat(n):
-    threads = cpu_count()
-    print('Warning! float calculations can take a long time')
-    #multi core test#
-    if threads >= 4:
-        print("Creating list.")
-        createList(n)
-        print("List created")
-        print("Starting {} calculations with {} threads".format(len(calc), threads))
-        startTime = datetime.now()
-        p = Pool(threads)
-        p.map(f, calc)
-        print("Took {} with {} thread(s)".format((datetime.now() - startTime).total_seconds(), threads))
-        input("Press enter to close program")
-    else:
-        print('Float test takes too long with < 4 threads')
-    calc[:] = []
+
+
+def timer(func):
+	def f(*args, **kwargs):
+		before = time()
+		rv = func(*args, **kwargs)
+		after = time()
+		print('elapsed', after - before)
+		return rv
+	return f
+
+
+def int_calc(x):
+	c = math.sqrt((x**2)+(x**2))
+
+
+def float_calc(x):
+	while x > 1:
+		x *= 0.9999
+
+
+def create_list(n):
+	for i in range(n):
+		yield i
+
+
+@timer
+def calculate(func,list, cores):
+	with Pool(cores) as p:
+		p.map(func,list)
+
+
+def start_int(n):
+	print("Starting {} integer calculations with 1 thread".format(n))
+	calculate(int_calc, create_list(n), 1)
+	print("Starting {} integer calculations with {} threads".format(n, cpu_count()))
+	calculate(int_calc, create_list(n), cpu_count())
+
+
+def start_float(n):
+	print("Starting {} float calculations with 1 thread".format(n))
+	calculate(float_calc, create_list(n), 1)
+	print("Starting {} float calculations with {} threads".format(n, cpu_count()))
+	calculate(float_calc, create_list(n), cpu_count())
+
+
 if __name__ == '__main__':
-    startInt(10**7)
-    startFloat(10**4)
+	start_int(10**7)
+	start_float(10**3)
