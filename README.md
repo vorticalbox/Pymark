@@ -26,6 +26,7 @@ This function does float calculations and takes a list. No need to use this func
 
 ## TODO
 -Output results to file
+-Create more tests
 
 ## Contributing
 
@@ -36,15 +37,21 @@ This function does float calculations and takes a list. No need to use this func
 5. Submit a pull request :D
 
 ## History
-v1.2
-Added Float test for CPUs with 4 threads or more
-Fixed an issue to left the list populated between tests, now clears list at the end of each test.
+###v1.3
+1. Massively reduced memory usage.
+2. Changed Float to allow testing on any system.
+3. Much neater code
 
-v1.1
-added auto thread detection
 
-v1.0
-Created basic benchmark.
+###v1.2
+1. Added Float test for CPUs with 4 threads or more
+2. Fixed an issue to left the list populated between tests, now clears list at the end of each test.
+
+###v1.1
+1. added auto thread detection
+
+###v1.0
+1. Created basic benchmark.
 
 ## Credits
 
