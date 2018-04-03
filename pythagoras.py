@@ -12,7 +12,6 @@ def timer(func):
 		return rv
 	return f
 
-
 def int_calc(x):
 	c = math.sqrt((x**2)+(x**2))
 
@@ -38,7 +37,7 @@ def start_int(n):
 	calculate(int_calc, create_list(n), 1)
 	print("Starting {} integer calculations with {} threads".format(n, cpu_count()))
 	calculate(int_calc, create_list(n), cpu_count())
-
+    
 
 def start_float(n):
 	print("Starting {} float calculations with 1 thread".format(n))
@@ -48,5 +47,8 @@ def start_float(n):
 
 
 if __name__ == '__main__':
-	start_int(10**7)
-	start_float(10**3)
+
+name = raw_input("What mode do you want to use?")
+
+	start_int(10**8)
+	start_float(10**4)
