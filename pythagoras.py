@@ -8,7 +8,11 @@ def timer(func):
 		before = time()
 		rv = func(*args, **kwargs)
 		after = time()
-		print('elapsed', after - before)
+		dif = after - before
+	##	calcs = n / dif 
+	## Note: n is the number of calculations run by the start methods. To-do: Find a way to pass N to here.
+		print('elapsed', dif)
+	##	print('Calculations per second:', calcs)
 		return rv
 	return f
 
@@ -27,7 +31,7 @@ def create_list(n):
 
 
 @timer
-def calculate(func,list, cores):
+def calculate(func, list, cores):
 	with Pool(cores) as p:
 		p.map(func,list)
 
@@ -48,7 +52,5 @@ def start_float(n):
 
 if __name__ == '__main__':
 
-name = raw_input("What mode do you want to use?")
-
-	start_int(10**8)
+	start_int(10**7)
 	start_float(10**4)
