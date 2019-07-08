@@ -26,8 +26,8 @@ def float_calc(x):
 
 
 def process_target(func, count, offset, step):
-	for i in range(0, count, step):
-		func(i + offset)
+	for i in range(offset, count, step):
+		func(i)
 
 @timer
 def calculate(func, num, cores):
