@@ -1,4 +1,4 @@
-from multiprocessing import Pool,cpu_count
+from multiprocessing import Process, cpu_count
 from time import time
 import math
 
@@ -25,29 +25,32 @@ def float_calc(x):
 		x *= 0.9999
 
 
-def create_list(n):
-	for i in range(n):
-		yield i
-
+def process_target(func, count, offset, step):
+	for i in range(offset, count, step):
+		func(i)
 
 @timer
-def calculate(func, list, cores):
-	with Pool(cores) as p:
-		p.map(func,list)
-
-
+def calculate(func, num, cores):
+	processes = [Process(target=process_target, args=(func, num, x, cores), daemon=True) for x in range(cores)]
+	for p in processes:
+		p.start()
+	
+	for p in processes:
+		p.join()
+	
+	
 def start_int(n):
 	print("Starting {} integer calculations with 1 thread".format(n))
-	calculate(int_calc, create_list(n), 1)
+	calculate(int_calc, n, 1)
 	print("Starting {} integer calculations with {} threads".format(n, cpu_count()))
-	calculate(int_calc, create_list(n), cpu_count())
+	calculate(int_calc, n, cpu_count())
     
 
 def start_float(n):
 	print("Starting {} float calculations with 1 thread".format(n))
-	calculate(float_calc, create_list(n), 1)
+	calculate(float_calc, n, 1)
 	print("Starting {} float calculations with {} threads".format(n, cpu_count()))
-	calculate(float_calc, create_list(n), cpu_count())
+	calculate(float_calc, n, cpu_count())
 
 
 if __name__ == '__main__':
